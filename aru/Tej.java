@@ -2,20 +2,20 @@ package aru;
 
 import java.util.Date;
 
-public class Tej
+public abstract class  Tej
 {
-    private final int LITER = 4;
-    private final int FELLITER = 2;
-    private final int POHAR = 1;
-    private final double ZSIROS = 6;
-    private final double FELZSIROS = 3;
+    public final int LITER = 4;
+    public final int FELLITER = 2;
+    public final int POHAR = 1;
+    public final double ZSIROS = 6;
+    public final double FELZSIROS = 3;
 
-    private long vonalKod;
-    private int urtartalom;
-    private String gyarto;
-    private Date szavatossagiIdo;
-    private double zsirtartalom;
-    private long ar;
+    protected long vonalKod;
+    protected int urtartalom;
+    protected String gyarto;
+    protected Date szavatossagiIdo;
+    protected double zsirtartalom;
+    protected long ar;
     public Tej(Long vonalKod, int urtartalom, String gyarto, Date szavatossagiIdo, double zsirtartalom, long ar)
     {
         this.ar = ar;
