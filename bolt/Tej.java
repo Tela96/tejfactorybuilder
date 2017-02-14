@@ -44,6 +44,13 @@ public class Tej
     }
     public String toString()
     {
-        return null;
+
+        StringBuilder tejAdatok = new StringBuilder();
+        tejAdatok.append("A tej ára:\t");
+        tejAdatok.append(getAr() + "\n");
+        tejAdatok.append("A tej űrtartalma:\t" + getUrtartalom() + "\n");
+        tejAdatok.append("A tej lejárati dátuma:\t" + getSzavatossagiIdo() + "\n");
+        tejAdatok.append("A tej zsírtartalma:\t" + getZsirtartalom() + "\n");
+        return tejAdatok.toString();
     }
 }
