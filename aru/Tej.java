@@ -1,21 +1,29 @@
-package bolt;
+package aru;
 
 import java.util.Date;
 
 public class Tej
 {
+    private final int LITER = 4;
+    private final int FELLITER = 2;
+    private final int POHAR = 1;
+    private final double ZSIROS = 6;
+    private final double FELZSIROS = 3;
+
+    private long vonalKod;
     private int urtartalom;
     private String gyarto;
     private Date szavatossagiIdo;
     private double zsirtartalom;
     private long ar;
-    public Tej(int urtartalom, String gyarto, Date szavatossagiIdo, double zsirtartalom, long ar)
+    public Tej(Long vonalKod, int urtartalom, String gyarto, Date szavatossagiIdo, double zsirtartalom, long ar)
     {
         this.ar = ar;
         this.gyarto = gyarto;
         this.szavatossagiIdo = szavatossagiIdo;
         this.urtartalom = urtartalom;
         this.zsirtartalom = zsirtartalom;
+        this. vonalKod = vonalKod;
     }
     public boolean joMeg()
     {
@@ -41,6 +49,10 @@ public class Tej
     public long getAr()
     {
         return ar;
+    }
+    public long getVonalKod()
+    {
+        return vonalKod;
     }
     public String toString()
     {
