@@ -2,7 +2,7 @@ package aru;
 
 import java.util.Date;
 
-public abstract class  Tej
+public abstract class Tej extends Elelmiszer
 {
     public final int LITER = 4;
     public final int FELLITER = 2;
