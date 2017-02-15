@@ -1,5 +1,7 @@
 package bolt;
 
+import aru.Elelmiszer;
+import aru.Sajt;
 import aru.Tej;
 
 import java.util.Hashtable;
@@ -9,21 +11,21 @@ public class Bolt
     private String nev;
     private String cim;
     private String tulajdonos;
-    private Hashtable<Long, BoltBejegyzes> tejpult;
+    private Hashtable<Long, BoltBejegyzes> elelmiszerpult;
 
     public Bolt(String nev, String cim, String tulajdonos)
     {
         this.nev = nev;
         this.cim = cim;
         this.tulajdonos = tulajdonos;
-        this.tejpult = new Hashtable<Long, BoltBejegyzes>();
+        this.elelmiszerpult = new Hashtable<Long, BoltBejegyzes>();
     }
-    public Bolt(String nev, String cim, String tulajdonos, Hashtable tejpult)
+    public Bolt(String nev, String cim, String tulajdonos, Hashtable elelmiszerpult)
     {
         this.nev = nev;
         this.cim = cim;
         this.tulajdonos = tulajdonos;
-        this.tejpult = tejpult;
+        this.elelmiszerpult = elelmiszerpult;
     }
 
     public String getNev() {
@@ -37,70 +39,92 @@ public class Bolt
     public String getTulajdonos() {
         return tulajdonos;
     }
+    private boolean vanMegAdottAru(Class c)
+    {
+        for (BoltBejegyzes b :elelmiszerpult.values())
+        {
+            Elelmiszer e = b.getElelmiszer();
+            if (e.getClass().equals(c)) return true;
+        }
+        return false;
+    }
     public boolean vanMegTej()
     {
-        return (tejpult.size() > 0);
+        return vanMegAdottAru(Tej.class);
     }
-    public Tej vasarolTej(Long vonalKod)
+    public boolean vanMegSajt()
     {
-        Tej vasaroltTej = tejpult.get(vonalKod).getT();
-        tejpult.get(vonalKod).levonMennyiseg(1);
-        return vasaroltTej;
+        return vanMegAdottAru(Sajt.class);
     }
-    public void feltoltTej(Tej m)
+    public Elelmiszer vasarolElelmiszer(Long vonalKod)
     {
-        BoltBejegyzes bejegyzes = new BoltBejegyzes(m, 1, 240);
-        tejpult.put(bejegyzes.getT().getVonalKod(), bejegyzes);
+        BoltBejegyzes bejegyzes = elelmiszerpult.get(vonalKod);
+        Elelmiszer vasaroltElelmiszer = bejegyzes.getElelmiszer();
+        bejegyzes.levonMennyiseg(1);
+        return vasaroltElelmiszer;
+    }
+    public void  feltoltElelmiszerrel(Long vonalKod, long mennyiseg)
+    {
+        BoltBejegyzes bejegyzes = elelmiszerpult.get(vonalKod);
+        bejegyzes.adMennyiseg(mennyiseg);
+
+    }
+    public void feltoltUjElelmiszerrel(Elelmiszer elelmiszer, long mennyiseg, long ar)
+    {
+        BoltBejegyzes bejegyzes = new BoltBejegyzes(elelmiszer, mennyiseg, ar);
+        Elelmiszer ujElelmiszer = bejegyzes.getElelmiszer();
+        long vonalKod = ujElelmiszer.getVonalKod();
+        elelmiszerpult.put(vonalKod, bejegyzes);
 
     }
     protected class BoltBejegyzes
     {
-        private Tej t;
-        private int ar;
-        private int mennyiseg;
+        private Elelmiszer e;
+        private long ar;
+        private long mennyiseg;
 
-        BoltBejegyzes(Tej t, int mennyiseg, int ar)
+        BoltBejegyzes(Elelmiszer e, long mennyiseg, long ar)
         {
-            this.t = t;
+            this.e = e;
             this.mennyiseg = mennyiseg;
             this.ar = ar;
         }
 
-        public Tej getT()
+        public Elelmiszer getElelmiszer()
         {
-            return t;
+            return e;
         }
 
-        public void setT(Tej t)
+        public void setElelmiszer(Elelmiszer e)
         {
-            this.t = t;
+            this.e = e;
         }
 
-        public int getMennyiseg()
+        public long getMennyiseg()
         {
             return mennyiseg;
         }
 
-        public void setMennyiseg(int mennyiseg)
+        public void setMennyiseg(long mennyiseg)
         {
             this.mennyiseg = mennyiseg;
         }
 
-        public int getAr()
+        public long getAr()
         {
             return ar;
         }
 
-        public void setAr(int ar)
+        public void setAr(long ar)
         {
             this.ar = ar;
         }
 
-        public void adMennyiseg(int mennyiseg)
+        public void adMennyiseg(long mennyiseg)
         {
             this.mennyiseg += mennyiseg;
         }
-        public void levonMennyiseg(int mennyiseg)
+        public void levonMennyiseg(long mennyiseg)
         {
             this.mennyiseg -= mennyiseg;
         }
