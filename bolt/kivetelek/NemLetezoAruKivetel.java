@@ -1,6 +1,6 @@
-package kivetelek;
+package bolt.kivetelek;
 
-import bolt.Bolt;
+import bolt.BoltKivetel;
 
 public class NemLetezoAruKivetel extends BoltKivetel
 {

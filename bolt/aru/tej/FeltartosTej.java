@@ -1,4 +1,6 @@
-package aru;
+package bolt.aru.tej;
+
+import bolt.aru.Tej;
 
 import java.util.Date;
 

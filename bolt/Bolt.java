@@ -1,8 +1,8 @@
 package bolt;
 
-import aru.Elelmiszer;
-import aru.Sajt;
-import aru.Tej;
+import bolt.aru.Elelmiszer;
+import bolt.aru.Sajt;
+import bolt.aru.Tej;
 
 import java.util.Hashtable;
 

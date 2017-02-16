@@ -1,4 +1,4 @@
-package aru;
+package bolt.aru;
 
 import java.util.Date;
 

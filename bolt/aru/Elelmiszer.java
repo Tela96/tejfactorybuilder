@@ -1,8 +1,10 @@
-package aru;
+package bolt.aru;
+
+import bolt.Aru;
 
 import java.util.Date;
 
-public abstract class Elelmiszer
+public abstract class Elelmiszer extends Aru
 {
     protected Long vonalKod = null;
     protected String gyarto = null;

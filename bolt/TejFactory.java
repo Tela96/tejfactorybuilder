@@ -1,4 +1,8 @@
-package aru;
+package bolt;
+
+import bolt.aru.Tej;
+import bolt.aru.tej.FeltartosTej;
+import bolt.aru.tej.TartosTej;
 
 import java.util.Date;
 
