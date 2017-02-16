@@ -1,6 +1,8 @@
 package kivetelek;
 
-public class NemLetezoAruKivetel extends Exception
+import bolt.Bolt;
+
+public class NemLetezoAruKivetel extends BoltKivetel
 {
     public NemLetezoAruKivetel(String message)
     {
