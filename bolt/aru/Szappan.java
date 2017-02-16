@@ -7,5 +7,14 @@ import bolt.Aru;
  */
 public class Szappan extends Aru
 {
-
+    char mosohatas;
+    public Szappan(Long vonalKod, String gyarto, char mosohatas)
+    {
+        super(vonalKod, gyarto);
+        this.mosohatas = mosohatas;
+    }
+    public char getMosoHatas()
+    {
+        return mosohatas;
+    }
 }

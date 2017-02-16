@@ -6,15 +6,14 @@ import java.util.Date;
 
 public abstract class Elelmiszer extends Aru
 {
-    protected Long vonalKod = null;
-    protected String gyarto = null;
+
     protected Date szavatossagiIdo = null;
 
     public Elelmiszer(Long vonalKod, String gyarto, Date szavatossagiIdo)
     {
-        this.gyarto = gyarto;
+        super(vonalKod, gyarto);
         this.szavatossagiIdo = szavatossagiIdo;
-        this.vonalKod = vonalKod;
+
     }
 
     public boolean joMeg()
